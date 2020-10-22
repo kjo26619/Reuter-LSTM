@@ -1,3 +1,6 @@
+import tensorflow as tf
+import rnn
+
 def main():
   input_word = 1000
   (x_train, y_train), (x_test, y_test) = reuters.load_data(num_words=input_word, test_split=0.2)
@@ -11,7 +14,7 @@ def main():
 
   model = rnn.lstm(input_feature=input_word)
 
-  hist = model.fit(x_train, y_train, batch_size=128, epochs=50, validation_split=0.2)
+  hist = model.fit(x_train, y_train, batch_size=64, epochs=50, validation_split=0.2)
 
   test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
 
